@@ -1,1 +1,39 @@
-<p>header works!</p>
+<header>
+    <div class="mini-navbar-wrap">
+        <div class="logo-wrap">
+            <p class="logo"><span class="logo">Be Gallary</span></p>
+        </div>
+        <div class="mini-navbar">
+            <ul *ngIf="!isLoggedIn">
+                <li>
+                    <a href="#">Login</a>
+                </li>
+                <li>
+                    <a href="#">Register</a>
+                </li>
+            </ul>
+            <ul *ngIf="isLoggedIn">
+                <li>
+                    <a href="#">Welcome</a>
+                </li>
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a routerLink="/">Home</a>
+            </li>
+            <li>
+                <a routerLink="/theme/recent">Themes</a>
+            </li>
+            <li>
+                <a routerLink="/theme/new">New Theme</a>
+            </li>
+        </ul>
+    </nav>
+
+</header>
