@@ -1,0 +1,21 @@
+footer {
+    background: rgb(232, 134, 54);
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 65px;
+    display: block;
+    
+}
+
+footer p {
+    margin: 5px;
+    padding: 2px;
+    font-size: 0.8em;
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-position: under;
+    text-decoration-color: inherit;
+}

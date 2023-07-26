@@ -1,23 +1,29 @@
 <header>
     <div class="mini-navbar-wrap">
         <div class="logo-wrap">
-            <p class="logo"><span class="logo">Be Gallary</span></p>
+            <p class="logo"><ng-container class="logo"><a class="logo" routerLink="/">Be Gallery</a></ng-container></p>
         </div>
+        <form>
+            <div class="search-line">
+                <input type="search" id="mySearch" name="search" placeholder="Search for anything" />
+                <button>Search</button>
+            </div>
+        </form>
         <div class="mini-navbar">
-            <ul *ngIf="!isLoggedIn">
+            <ul>
                 <li>
-                    <a href="#">Login</a>
+                    <a routerLink="/auth/login">Login</a>
                 </li>
                 <li>
-                    <a href="#">Register</a>
+                    <a routerLink="/auth/register">Register</a>
                 </li>
             </ul>
-            <ul *ngIf="isLoggedIn">
+            <ul>
                 <li>
-                    <a href="#">Welcome</a>
+                    <a routerLink="/auth/profile"></a>
                 </li>
                 <li>
-                    <a href="#">Logout</a>
+                    <a routerLink="/auth/logout">Logout</a>
                 </li>
             </ul>
         </div>
@@ -25,15 +31,32 @@
     <nav>
         <ul>
             <li>
-                <a routerLink="/">Home</a>
+                <a routerLink="/">Abstract</a>
             </li>
             <li>
-                <a routerLink="/theme/recent">Themes</a>
+                <a routerLink="/theme/recent">Animals</a>
             </li>
             <li>
-                <a routerLink="/theme/new">New Theme</a>
+                <a routerLink="/theme/new">Auto</a>
+            </li>
+            <li>
+                <a routerLink="/theme/new">Children's</a>
+            </li>
+            <li>
+                <a routerLink="/theme/new">Flowers</a>
+            </li>
+            <li>
+                <a routerLink="/theme/new">Food & Drinks</a>
+            </li>
+            <li>
+                <a routerLink="/theme/new">Nature</a>
+            </li>
+            <li>
+                <a routerLink="/theme/new">Portraites</a>
+            </li>
+            <li>
+                <a routerLink="/theme/new">Reproductions </a>
             </li>
         </ul>
     </nav>
-
 </header>
