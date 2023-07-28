@@ -1,1 +1,1 @@
-//export URL = 'https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/.json'
+export const URL = 'https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/.json'
