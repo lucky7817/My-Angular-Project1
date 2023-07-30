@@ -6,14 +6,16 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { YourAccountComponent } from '../auth/your-account/your-account.component';
 
 
 @NgModule({
   declarations: [
+    HomeComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
     PageNotFoundComponent,
+    YourAccountComponent,
     
   ],
   imports: [
@@ -25,6 +27,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HeaderComponent,
     FooterComponent,
     HomeComponent,
+    PageNotFoundComponent,
+    YourAccountComponent,
   ],
 })
 export class CoreModule { }

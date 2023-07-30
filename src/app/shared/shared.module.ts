@@ -7,16 +7,16 @@ import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
-    PresentsOurSiteComponent,
     LoaderComponent,
+    PresentsOurSiteComponent, 
   ],
   imports: [
     CommonModule,
     RouterModule,
   ],
   exports: [
-    PresentsOurSiteComponent,
     LoaderComponent,
+    PresentsOurSiteComponent,
   ]
 })
 export class SharedModule { }

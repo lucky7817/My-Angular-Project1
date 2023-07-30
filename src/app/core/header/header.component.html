@@ -10,7 +10,7 @@
             </div>
         </form>
         <div class="mini-navbar">
-            <ul>
+            <ul *ngIf="!isLoggedIn">
                 <li>
                     <a routerLink="/auth/login">Login</a>
                 </li>
@@ -18,9 +18,9 @@
                     <a routerLink="/auth/register">Register</a>
                 </li>
             </ul>
-            <ul>
+            <ul *ngIf="isLoggedIn">
                 <li>
-                    <a routerLink="/auth/profile"></a>
+                    <a routerLink="/auth/profile">{{user?.username}}'s profile</a>
                 </li>
                 <li>
                     <a routerLink="/auth/logout">Logout</a>
@@ -55,7 +55,7 @@
                 <a routerLink="/theme/new">Portraites</a>
             </li>
             <li>
-                <a routerLink="/theme/new">Reproductions </a>
+                <a routerLink="/theme/new">Reproductions    </a>
             </li>
         </ul>
     </nav>

@@ -35,14 +35,6 @@ header li {
     padding: 0 .95em;    
 }
 
-/* header a {
-    text-decoration: none;
-    color: rgb(18, 17, 17);
-    cursor: pointer;
-    /* margin-right: 10px; */
-    /* margin-left: 1px;    */
-/* } */ 
-
 .mini-navbar a {
     text-decoration: none;
     color: rgb(18, 17, 17);

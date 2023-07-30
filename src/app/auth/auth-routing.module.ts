@@ -1,45 +1,32 @@
 import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
+import { LogoutComponent } from "./logout/logout.component";
+import { YourAccountComponent } from "./your-account/your-account.component";
+import { AccountComponent } from "./account/account.component";
 
 
 const routes: Routes = [
     {
         path: 'auth/login',
         component: LoginComponent,
-        canActivate: const [AuthActivate],
-        data: {
-            title: 'Login',
-            loginRequired: false,
-        }
     },
     {
         path: 'auth/register',
         component: RegisterComponent,
-        canActivate: [AuthActivate],
-        data: {
-            title: 'Register',
-            loginRequired: false,
-        }
     },
     {
         path: 'auth/logout',
         component: LogoutComponent,
-        canActivate: [AuthActivate],
-        data: {
-            title: 'Login',
-            loginRequired: true,
-        }
     },
-    // {
-    //     path: 'auth/profile',
-    //     component: ProfileComponent,
-    //     canActivate: [AuthActivate],
-    //     data: {
-    //         title: 'Login',
-    //         loginRequired: true,
-    //     }
-    // },
+    {
+        path: 'auth/profile',
+        component: YourAccountComponent,
+    },
+    {
+        path: 'auth/profile/account',
+        component: AccountComponent,
+    },
 ];
 
 export const AuthRoutingModule = RouterModule.forChild(routes);

@@ -1,12 +1,15 @@
-import { IAddress } from "./address";
-import { IName } from "./name";
 
 export interface IUser {
-    _id: string;
+    // _id: string;
     username: string;
-    name: IName;
+    firstname: string;
+    secondname: string;
+    lastname: string;
     email: string;
     phone: string;
-    address: IAddress;
-    password: string;
+    country: string;
+    place: string;
+    postcode: string;
+    street: string;
+    // password: string;
 }
