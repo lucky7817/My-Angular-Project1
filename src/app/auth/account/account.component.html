@@ -1,59 +1,63 @@
 <app-your-account />
 <div class="container">
     <div class="profile">
-        <h3>Profile:</h3>
+        <h3>My Profile:</h3>
+        <h2>Be Gallery</h2>
+        <div>
+            <h1>Be Gallery</h1>
+            <h1>Be Gallery</h1>
+            <h1>Be Gallery</h1>  
+        </div>
         <ng-container *ngIf="!showEditMode">
-            <div class="flex">
+            <div class="field">
                 <p>Username:</p>
                 <p>{{userInfo!.username}}</p>
             </div>
-            <div class="flex">
+            <div class="field">
                 <p>Firstname:</p>
                 <p>{{userInfo!.firstname}}</p>
             </div>
-            <div class="flex">
+            <div class="field">
                 <p>Secondname:</p>
                 <p>{{userInfo!.secondname}}</p>
             </div>
-            <div class="flex">
+            <div class="field">
                 <p>Lastname:</p>
                 <p>{{userInfo!.lastname}}</p>
             </div>
-            <div class="flex">
+            <div class="field">
                 <p>Email: </p>
                 <p>{{userInfo!.email}}</p>
             </div>
-            <div class="flex">
+            <div class="field">
                 <p>Phone: </p>
                 <p>{{userInfo!.phone}}</p>
             </div>
-            <div class="flex">
+            <div class="field">
                 <p>Country:</p>
                 <p>{{userInfo!.country}}</p>
             </div>
-            <div class="flex">
+            <div class="field">
                 <p>Place:</p>
                 <p>{{userInfo!.place}}</p>
             </div>
-            <div class="flex">
+            <div class="field">
                 <p>Postcode:</p>
                 <p>{{userInfo!.postcode}}</p>
             </div>
-            <div class="flex">
+            <div class="field">
                 <p>Street:</p>
                 <p>{{userInfo!.street}}</p>
             </div>
-            <button class="cancel-button" (click)="closeAccountForm()">Close it</button>
+            <button class="close-it-button" (click)="closeAccountForm()">Close it</button>
             <button class="edit-button" (click)="toggleEditMode()">Edit</button>
         </ng-container>
-
-
 
 
         <ng-container *ngIf="showEditMode">
             <form [formGroup]="form" (ngSubmit)="saveAccount()">
                 <!-- username -->
-                <div class="flex">
+                <div class="field">
                     <p>Username:</p>
                     <input type="text" id="username" formControlName="username">
                 </div>
@@ -68,7 +72,7 @@
                 </ng-container>
 
                 <!-- firstname -->
-                <div class="flex">
+                <div class="field">
                     <p>Firstname:</p>
                     <input type="text" id="firstname" formControlName="firstname">
                 </div>
@@ -83,7 +87,7 @@
                 </ng-container>
 
                 <!-- Secondname -->
-                <div class="flex">
+                <div class="field">
                     <p>Secondname:</p>
                     <input type="text" id="secondname" formControlName="secondname">
                 </div>
@@ -98,7 +102,7 @@
                 </ng-container>
 
                 <!-- Lastname -->
-                <div class="flex">
+                <div class="field">
                     <p>Lastname:</p>
                     <input type="text" id="lastname" formControlName="lastname">
                 </div>
@@ -113,7 +117,7 @@
                 </ng-container>
 
                 <!-- Email -->
-                <div class="flex">
+                <div class="field">
                     <p>Email: </p>
                     <input type="text" id="email" formControlName="email">
                 </div>
@@ -125,7 +129,7 @@
                 </ng-container>
 
                 <!-- Phone -->
-                <div class="flex">
+                <div class="field">
                     <p>Phone: </p>
                     <input type="text" id="phone" formControlName="phone" placeholder="885 888 888">
                 </div>
@@ -140,7 +144,7 @@
                 </ng-container>
 
                 <!-- country -->
-                <div class="flex">
+                <div class="field">
                     <p>Country:</p>
                     <input type="text" id="country" formControlName="country">
                 </div>
@@ -155,7 +159,7 @@
                 </ng-container>
 
                 <!-- place -->
-                <div class="flex">
+                <div class="field">
                     <p>Place:</p>
                     <input type="text" id="place" formControlName="place">
                 </div>
@@ -170,7 +174,7 @@
                 </ng-container>
 
                 <!-- postcode -->
-                <div class="flex">
+                <div class="field">
                     <p>Postcode:</p>
                     <input type="text" id="postcode" formControlName="postcode">
                 </div>
@@ -185,7 +189,7 @@
                 </ng-container>
 
                 <!-- street -->
-                <div class="flex">
+                <div class="field">
                     <p>Street:</p>
                     <input type="text" id="street" formControlName="street">
                 </div>

@@ -1,15 +1,14 @@
-.welcome {
+.present {
     margin-top: 2em;
     position: fixed;
-    bottom: 8%;
+    bottom: 10%;
     display: block;
-    text-align: center;
-    
+    text-align: center;   
 }
 
 .column {
     background-color: #faeabf;
-    height: 200px;
+    height: 210px;
     justify-content: center;
 }
 

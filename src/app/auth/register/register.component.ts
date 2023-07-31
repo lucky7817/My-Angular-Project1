@@ -25,7 +25,7 @@ export class RegisterComponent {
       rePassword: [],
     }, 
     {
-      validators: [sameValueGroupValidator('password', 'rePassword')]
+      validators: [samePassGroupValidator('password', 'rePassword')]
     })
   })
 
@@ -35,7 +35,5 @@ export class RegisterComponent {
     console.log(this.form.value);
   }
 }
-// function samePassGroupValidator(arg0: string, arg1: string): any {
-//   throw new Error('Function not implemented.');
-// }
+
 

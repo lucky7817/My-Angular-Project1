@@ -15,9 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     RegisterComponent,
     LoginComponent,
+    LogoutComponent,
     AccountComponent,
     YourAccountComponent,
-    LogoutComponent,
 
   ],
   imports: [
@@ -26,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
+    
   ],
   exports: [
     LoginComponent,
