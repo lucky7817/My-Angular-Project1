@@ -4,6 +4,7 @@ import { RegisterComponent } from "./register/register.component";
 import { LogoutComponent } from "./logout/logout.component";
 import { YourAccountComponent } from "./your-account/your-account.component";
 import { AccountComponent } from "./account/account.component";
+import { CreatePictureComponent } from "./create-picture/create-picture.component";
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
         path: 'auth/profile/account',
         component: AccountComponent,
     },
+    {
+        path: 'auth/profile/create-picture',
+        component: CreatePictureComponent,
+    }
 ];
 
 export const AuthRoutingModule = RouterModule.forChild(routes);

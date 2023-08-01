@@ -8,6 +8,7 @@ import { YourAccountComponent } from './your-account/your-account.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreatePictureComponent } from './create-picture/create-picture.component';
 
 
 
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LogoutComponent,
     AccountComponent,
     YourAccountComponent,
+    CreatePictureComponent,
 
   ],
   imports: [
@@ -25,8 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AuthRoutingModule,
     FormsModule,
     SharedModule,
-    ReactiveFormsModule,
-    
+    ReactiveFormsModule,  
   ],
   exports: [
     LoginComponent,
@@ -34,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LogoutComponent,
     AccountComponent,
     YourAccountComponent,
+    CreatePictureComponent,
   ]
 })
 export class AuthModule { }
