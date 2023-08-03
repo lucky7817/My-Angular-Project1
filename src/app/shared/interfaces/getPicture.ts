@@ -1,5 +1,5 @@
 export interface IGetPicture {
-    id?: string;
+    picId?: string;
     picName: string;
     pickMaterials: string;
     picCategory: string;

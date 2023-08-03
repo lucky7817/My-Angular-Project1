@@ -1,6 +1,5 @@
-
 export interface IUser {
-    // _id: string;
+    _id: string;
     username: string;
     firstname: string;
     secondname: string;
@@ -11,5 +10,6 @@ export interface IUser {
     place: string;
     postcode: string;
     street: string;
-    // password: string;
+    password: string;
+    rePassword: string;
 }

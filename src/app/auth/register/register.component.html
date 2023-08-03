@@ -24,11 +24,11 @@
             <input class="input-error" type="text" formControlName="firstname" name="firstname" id="firstname"
                 placeholder="First name">
         </p>
-        <ng-container *ngIf="form.get('name')?.get('firstname')?.touched">
-            <p *ngIf="form.get('name')?.get('firstname')?.errors?.['required']" class="error">
+        <ng-container *ngIf="form.get('firstname')?.touched">
+            <p *ngIf="form.get('firstname')?.errors?.['required']" class="error">
                 First name is required!
             </p>
-            <p *ngIf="form.get('name')?.get('firstname')?.errors?.['minlength']" class="error">
+            <p *ngIf="form.get('firstname')?.errors?.['minlength']" class="error">
                 First name shold be londer than 2 characters!
             </p>
         </ng-container>
@@ -39,11 +39,11 @@
             <input class="input-error" formControlName="secondname" type="text" name="secondname" id="secondname"
                 placeholder="Second name">
         </p>
-        <ng-container *ngIf="form.get('name')?.get('secondname')?.touched">
-            <p *ngIf="form.get('name')?.get('secondname')?.errors?.['required']" class="error">
+        <ng-container *ngIf="form.get('secondname')?.touched">
+            <p *ngIf="form.get('secondname')?.errors?.['required']" class="error">
                 Second name is required!
             </p>
-            <p *ngIf="form.get('name')?.get('secondname')?.errors?.['minlength']" class="error">
+            <p *ngIf="form.get('secondname')?.errors?.['minlength']" class="error">
                 Second name shold be londer than 2 characters!
             </p>
         </ng-container>
@@ -54,11 +54,11 @@
             <input class="input-error" formControlName="lastname" type="text" name="lastname" id="lastname"
                 placeholder="Last name">
         </p>
-        <ng-container *ngIf="form.get('name')?.get('lastname')?.touched">
-            <p *ngIf="form.get('name')?.get('lastname')?.errors?.['required']" class="error">
+        <ng-container *ngIf="form.get('lastname')?.touched">
+            <p *ngIf="form.get('lastname')?.errors?.['required']" class="error">
                 Last name is required!
             </p>
-            <p *ngIf="form.get('name')?.get('lastname')?.errors?.['minlength']" class="error">
+            <p *ngIf="form.get('lastname')?.errors?.['minlength']" class="error">
                 Last name shold be londer than 2 characters!
             </p>
         </ng-container>

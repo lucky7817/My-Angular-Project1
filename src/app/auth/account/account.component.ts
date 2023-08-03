@@ -12,18 +12,21 @@ export class AccountComponent {
 
   showEditMode: boolean = false;
 
-  userInfo: IUser = {
-    username: 'ddd171717',
-    firstname: 'Dilyan',
-    secondname: 'Ivanov',
-    lastname: 'Ivanov',
-    email: 'dilyan@gmail.com',
-    phone: '+3590888775555',
-    country: 'Bulgaria',
-    place: 'Yambol',
-    postcode: '8600',
-    street: 'Viza 6',
-  };
+  userInfo: IUser | null = null
+
+  // userInfo: IUser = {
+  //   _id: 2
+  //   username: 'ddd171717',
+  //   firstname: 'Dilyan',
+  //   secondname: 'Ivanov',
+  //   lastname: 'Ivanov',
+  //   email: 'dilyan@gmail.com',
+  //   phone: '+3590888775555',
+  //   country: 'Bulgaria',
+  //   place: 'Yambol',
+  //   postcode: '8600',
+  //   street: 'Viza 6',
+  // };
 
 
   form = this.fb.group({

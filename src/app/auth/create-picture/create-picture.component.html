@@ -1,6 +1,11 @@
 <app-your-account />
 <form class="create" #form="ngForm" (ngSubmit)="createPictureHandler(form)">
+    <div *ngIf="isLoading">
+        <app-loader />
+    </div>
+    
     <fieldset>
+
         <h2>Create Picture Form</h2>
 
         <!-- name -->

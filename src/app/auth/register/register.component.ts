@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { samePassGroupValidator } from 'src/app/shared/validators';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +12,7 @@ import { samePassGroupValidator } from 'src/app/shared/validators';
 export class RegisterComponent {
 
   form = this.fb.group({
+    _id: [''],
     username: ['', [Validators.required, Validators.minLength(5)]],
     firstname: ['', [Validators.required, Validators.minLength(2)]],
     secondname: ['', [Validators.required, Validators.minLength(2)]],
@@ -29,10 +32,21 @@ export class RegisterComponent {
     })
   })
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
 
-  registerHandler() {
-    console.log(this.form.value);
+  // registerHandler() {
+  //   console.log(this.form.value);
+  // }
+  registerHandler(): void {
+    if (this.form.invalid) { return; }
+    const { _id, username, firstname, secondname, lastname, email, phone, country, place,
+      postcode, street, pass: {password, rePassword} = {} } = this.form.value;
+    this.authService.createUserAbstract(_id!, username!, firstname!, secondname!,
+      lastname!, email!, phone!, country!, place!, postcode!, street!,
+      password!, rePassword!).subscribe(
+        response => { console.log(response); this.router.navigate(["/auth/profile"]) },
+        (err) => console.log(err)
+      )
   }
 }
 

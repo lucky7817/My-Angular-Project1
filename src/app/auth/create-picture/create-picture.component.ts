@@ -10,19 +10,21 @@ import { Router } from '@angular/router';
 })
 export class CreatePictureComponent {
 
-  constructor(private authService: AuthService, private router: Router) {}
+  isLoading: boolean = true;
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   createPictureHandler(form: NgForm): void {
     if (form.invalid) { return; }
-    const { picName, pickMaterials, picCategory, picImage, picPrice, picDescription  } = form.value;
-    this.authService.createPictureAbstract(picName, pickMaterials, picCategory, picImage, picPrice, picDescription).subscribe(
-      (response) => console.log(response),
-      (err) => console.log(err) 
-    )
+    const { picName, pickMaterials, picCategory, picImage, picPrice, picDescription } = form.value;
+    this.authService.createPictureAbstract(picName, pickMaterials, picCategory, picImage,
+      picPrice, picDescription).subscribe(
+        response => { console.log(response); this.router.navigate(["/auth/profile"]) },
+        (err) => console.log(err)
+      )
   }
 
   closeCreateForm(): void {
     this.router.navigate(["/auth/profile"]);
   }
-
 }

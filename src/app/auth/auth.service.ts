@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IPicture, IUserLog } from '../shared/interfaces';
+import { IPicture, IUser, IUserLog } from '../shared/interfaces';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -47,4 +47,15 @@ export class AuthService {
     { picName, pickMaterials, picCategory, picImage, picPrice, picDescription });
 
    }
+
+   createUserAbstract(_id: string, username: string, firstname: string,
+    secondname: string, lastname: string, email: string, phone: string,
+     country: string, place: string, postcode: string, street: string, password: string,
+     rePassword: string) {
+    return this.http.post<IUser[]>('https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/users.json',
+    { _id, username, firstname, secondname, lastname, email, phone, country, place,
+    postcode, street, password, rePassword });
+
+   }
+   
 }

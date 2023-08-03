@@ -1,12 +1,14 @@
-
-<main>
-    <div *ngIf="isLoading">
-        <app-loader />
+<div *ngIf="isLoading">
+    <app-loader />
+</div>
+<div class="row" *ngIf="!isLoading">
+    <h2 class="title">Abstract pictures</h2>
+    <div class="column" *ngFor="let pic of picturesList">
+        <img src={{pic.picImage}} alt="picture" class="picture">
+        
+        <!-- <div>
+            <p>{{pic.picName}}</p>
+            <p>{{pic.picPrice}}</p>
+        </div> -->
     </div>
-
-    <div class="pictures-title" *ngIf="!isLoading">
-        <h2 class="title">Abstract pictures</h2>
-        <div *ngFor="let picture of pictures" class="pictures-container"></div>
-        <p></p>
-    </div>
-</main>
+</div>
