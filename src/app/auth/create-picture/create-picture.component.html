@@ -23,7 +23,7 @@
         <p class="field field-icon">
             <label for="picMaterials"><span><i class="field-user"></i></span></label>
             <input class="input-error" type="text" name="picMaterials" #materialsInput="ngModel" 
-            ngModel required minlength="8"id="picMaterials" placeholder="Materials*">
+            ngModel required minlength="8" id="picMaterials" placeholder="Materials*">
         </p>
         <ng-container *ngIf="materialsInput.touched">
             <p class="error" *ngIf="materialsInput.errors?.['required']">
@@ -38,7 +38,7 @@
         <!-- category -->
         <p class="field field-icon">
             <label for="picCategory"><span><i class="field-user"></i></span></label>
-            <select name="select-category" id="select-category" class="category" #categorySelect="ngModel" ngModel>
+            <select name="picCategory" id="picCategory" class="category" #categorySelect="ngModel" ngModel>
                 <option value="" disabled selected hidden>Choose a category*</option>
                 <option value="Abstract">Abstract</option>
                 <option value="Animals">Animals</option>
@@ -93,7 +93,7 @@
                 long.
             </p>
         </ng-container>
-        <button class="cancel">Cancel</button>
+        <button class="cancel" (click)="closeCreateForm()">Cancel</button>
         <button class="public" [disabled]="form.invalid">Create</button>
     </fieldset>
 </form>

@@ -41,8 +41,10 @@ export class AuthService {
     localStorage.removeItem(this.USER_KEY);
   }
 
-  createPictureAbstract(picName: string, picImage: string) {
-    return this.http.post<IPicture>('https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/abstract.json', { picName, picImage});
+  createPictureAbstract(picName: string, pickMaterials: string, picCategory: string,
+    picImage: string, picPrice: number, picDescription: string) {
+    return this.http.post<IPicture>('https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/abstract.json',
+    { picName, pickMaterials, picCategory, picImage, picPrice, picDescription });
 
    }
 }

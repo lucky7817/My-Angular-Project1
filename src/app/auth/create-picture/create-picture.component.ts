@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-picture',
@@ -9,15 +10,19 @@ import { AuthService } from '../auth.service';
 })
 export class CreatePictureComponent {
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   createPictureHandler(form: NgForm): void {
     if (form.invalid) { return; }
-    const { picName, picImage } = form.value;
-    this.authService.createPictureAbstract(picName, picImage).subscribe(
+    const { picName, pickMaterials, picCategory, picImage, picPrice, picDescription  } = form.value;
+    this.authService.createPictureAbstract(picName, pickMaterials, picCategory, picImage, picPrice, picDescription).subscribe(
       (response) => console.log(response),
       (err) => console.log(err) 
     )
+  }
+
+  closeCreateForm(): void {
+    this.router.navigate(["/auth/profile"]);
   }
 
 }

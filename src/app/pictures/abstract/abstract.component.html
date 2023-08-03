@@ -1,0 +1,12 @@
+
+<main>
+    <div *ngIf="isLoading">
+        <app-loader />
+    </div>
+
+    <div class="pictures-title" *ngIf="!isLoading">
+        <h2 class="title">Abstract pictures</h2>
+        <div *ngFor="let picture of pictures" class="pictures-container"></div>
+        <p></p>
+    </div>
+</main>

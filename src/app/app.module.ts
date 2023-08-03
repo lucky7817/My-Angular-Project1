@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
+import { PicturesModule } from './pictures/pictures.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,8 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     SharedModule,
     CoreModule,
+    PicturesModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
