@@ -22,7 +22,7 @@ export class AbstractComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.getPictures().pipe(map(resData => {
+    this.apiService.getPictures('abstract').pipe(map(resData => {
       const picturesArray = [];
       for(const key in resData) {
         if(resData.hasOwnProperty(key)) {

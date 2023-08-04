@@ -41,7 +41,7 @@ export class RegisterComponent {
     if (this.form.invalid) { return; }
     const { _id, username, firstname, secondname, lastname, email, phone, country, place,
       postcode, street, pass: {password, rePassword} = {} } = this.form.value;
-    this.authService.createUserAbstract(_id!, username!, firstname!, secondname!,
+    this.authService.createUser(_id!, username!, firstname!, secondname!,
       lastname!, email!, phone!, country!, place!, postcode!, street!,
       password!, rePassword!).subscribe(
         response => { console.log(response); this.router.navigate(["/auth/profile"]) },

@@ -1,8 +1,9 @@
 <app-your-account />
+
 <form class="create" #form="ngForm" (ngSubmit)="createPictureHandler(form)">
-    <div *ngIf="isLoading">
+    <!-- <div *ngIf="isLoading">
         <app-loader />
-    </div>
+    </div> -->
     
     <fieldset>
 
@@ -45,13 +46,15 @@
             <label for="picCategory"><span><i class="field-user"></i></span></label>
             <select name="picCategory" id="picCategory" class="category" #categorySelect="ngModel" ngModel>
                 <option value="" disabled selected hidden>Choose a category*</option>
-                <option value="Abstract">Abstract</option>
-                <option value="Animals">Animals</option>
-                <option value="Auto">Children's</option>
-                <option value="Auto">Flowers</option>
-                <option value="Auto">Food & Drinks</option>
-                <option value="Auto">Portraites</option>
-                <option value="Auto">Reproductions</option>
+                <option value="abstract">Abstract</option>
+                <option value="animals">Animals</option>
+                <option value="auto">Auto</option>
+                <option value="childrens">Children's</option>
+                <option value="flowers">Flowers</option>
+                <option value="foodAndDrinks">Food & Drinks</option>
+                <option value="nature">Nature</option>
+                <option value="portraites">Portraites</option>
+                <option value="reproductions">Reproductions</option>
             </select>
         </p>
 
@@ -89,7 +92,7 @@
             <textarea type="text" ngModel required #descriptionInput="ngModel" minlength="10" name="picDescription"
                 id="picDescription" rows="8" class="height" placeholder="Description*"></textarea>
         </p>
-        <ng-container>
+        <ng-container *ngIf="priceInput.touched">
             <p class="error" *ngIf="descriptionInput.errors?.['required']">
                 The field with your description is required.
             </p>

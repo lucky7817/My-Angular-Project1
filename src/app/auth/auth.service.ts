@@ -41,21 +41,22 @@ export class AuthService {
     localStorage.removeItem(this.USER_KEY);
   }
 
-  createPictureAbstract(picName: string, pickMaterials: string, picCategory: string,
+  createPicture(picName: string, pickMaterials: string, picCategory: string,
     picImage: string, picPrice: number, picDescription: string) {
-    return this.http.post<IPicture>('https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/abstract.json',
-    { picName, pickMaterials, picCategory, picImage, picPrice, picDescription });
+    return this.http.post<IPicture>(`https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/${picCategory}.json`,
+      { picName, pickMaterials, picCategory, picImage, picPrice, picDescription });
+  }
 
-   }
-
-   createUserAbstract(_id: string, username: string, firstname: string,
+  createUser(_id: string, username: string, firstname: string,
     secondname: string, lastname: string, email: string, phone: string,
-     country: string, place: string, postcode: string, street: string, password: string,
-     rePassword: string) {
+    country: string, place: string, postcode: string, street: string, password: string,
+    rePassword: string) {
     return this.http.post<IUser[]>('https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/users.json',
-    { _id, username, firstname, secondname, lastname, email, phone, country, place,
-    postcode, street, password, rePassword });
+      {
+        _id, username, firstname, secondname, lastname, email, phone, country, place,
+        postcode, street, password, rePassword
+      });
 
-   }
-   
+  }
+
 }

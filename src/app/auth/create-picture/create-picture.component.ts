@@ -17,7 +17,7 @@ export class CreatePictureComponent {
   createPictureHandler(form: NgForm): void {
     if (form.invalid) { return; }
     const { picName, pickMaterials, picCategory, picImage, picPrice, picDescription } = form.value;
-    this.authService.createPictureAbstract(picName, pickMaterials, picCategory, picImage,
+    this.authService.createPicture(picName, pickMaterials, picCategory, picImage,
       picPrice, picDescription).subscribe(
         response => { console.log(response); this.router.navigate(["/auth/profile"]) },
         (err) => console.log(err)
