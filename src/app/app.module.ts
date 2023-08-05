@@ -7,7 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { PicturesModule } from './pictures/pictures.module';
-import { AnimalsComponent } from './pictures/animals/animals.component';
+
 
 @NgModule({
   declarations: [

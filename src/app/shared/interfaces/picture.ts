@@ -1,6 +1,6 @@
 export interface IPicture {
     picName: string;
-    pickMaterials: string;
+    picMaterials: string;
     picCategory: string;
     picImage: string;
     picPrice: number;

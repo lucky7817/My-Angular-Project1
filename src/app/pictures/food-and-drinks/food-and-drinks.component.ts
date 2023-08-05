@@ -22,20 +22,12 @@ export class FoodAndDrinksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.getPictures('foodAndDrinks').pipe(map(resData => {
-      const picturesArray = [];
-      for(const key in resData) {
-        if(resData.hasOwnProperty(key)) {
-          picturesArray.push({picId:key, ...resData[key]}) 
-        }
-      }
-      return picturesArray
-    }))
+    this.apiService.getPictures('foodAndDrinks')
       .subscribe({
         next: (pictures) => {
           this.picturesList = pictures;
           console.log(this.picturesList);
-          
+
           this.isLoading = false;
         },
         error: (err) => {

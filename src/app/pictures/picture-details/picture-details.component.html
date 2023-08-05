@@ -1,0 +1,41 @@
+<!-- <h2 class="title">Abstract pictures</h2> -->
+<!-- <div *ngIf="isLoading">
+    <app-loader />
+</div>
+<div class="row" *ngIf="!isLoading">
+    <img alt="picture" class="picture">
+    <div class="items">
+        
+        <div class="picture-name">
+            <p></p>
+        </div>
+        <div class="picture-price">
+            <p>{{picture.picPrice}}</p>
+        </div>
+    </div>
+</div> -->
+<div *ngIf="!picture">
+    <app-loader />
+</div>
+<div class="container" *ngIf="picture">
+    <div class="image">
+        <img src={{picture.picImage}} alt="picture">
+    </div>
+    <div class="pic-text">
+        <div class="picture-category">
+            <p>Picture category: {{picture.picCategory}}</p>
+        </div>
+        <div class="picture-name">
+            <p>{{picture.picName}}</p>
+        </div>
+        <div class="picture-price">
+            <p>{{picture.picPrice}}</p>
+        </div>
+        <div class="picture-name">
+            <p>{{picture.picMaterials}}</p>
+        </div>
+        <div class="picture-name">
+            <p>{{picture.picDescription}}</p>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,7 @@ import { FoodAndDrinksComponent } from './food-and-drinks/food-and-drinks.compon
 import { NatureComponent } from './nature/nature.component';
 import { PortraitesComponent } from './portraites/portraites.component';
 import { ReproductionsComponent } from './reproductions/reproductions.component';
+import { PictureDetailsComponent } from './picture-details/picture-details.component';
 
 
 
@@ -26,6 +27,7 @@ import { ReproductionsComponent } from './reproductions/reproductions.component'
     NatureComponent,
     PortraitesComponent,
     ReproductionsComponent,
+    PictureDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { ReproductionsComponent } from './reproductions/reproductions.component'
     NatureComponent,
     PortraitesComponent,
     ReproductionsComponent,
+    PictureDetailsComponent,
   ]
 })
 export class PicturesModule { }

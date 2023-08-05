@@ -8,6 +8,7 @@ import { FoodAndDrinksComponent } from './food-and-drinks/food-and-drinks.compon
 import { NatureComponent } from './nature/nature.component';
 import { PortraitesComponent } from './portraites/portraites.component';
 import { ReproductionsComponent } from './reproductions/reproductions.component';
+import { PictureDetailsComponent } from './picture-details/picture-details.component';
 
 
 
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'picture/reproductions',
     component: ReproductionsComponent,
+  },
+  {
+    path: 'picture/abstract/:picId',
+    component: PictureDetailsComponent,
   },
 ];
 

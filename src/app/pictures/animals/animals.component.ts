@@ -22,15 +22,7 @@ export class AnimalsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.getPictures('animals').pipe(map(resData => {
-      const picturesArray = [];
-      for (const key in resData) {
-        if (resData.hasOwnProperty(key)) {
-          picturesArray.push({ picId: key, ...resData[key] })
-        }
-      }
-      return picturesArray
-    }))
+    this.apiService.getPictures('animals')
       .subscribe({
         next: (pictures) => {
           this.picturesList = pictures;

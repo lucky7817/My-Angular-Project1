@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { ApiService } from 'src/app/api.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { IGetPicture } from 'src/app/shared/interfaces';
@@ -12,9 +11,9 @@ import { IGetPicture } from 'src/app/shared/interfaces';
 export class AbstractComponent implements OnInit {
 
   isLoading: boolean = true;
-  picturesList: IGetPicture[] = []
+  picturesList: IGetPicture[] = [];
 
-  constructor(private apiService: ApiService, private authService: AuthService) {
+  constructor(private apiService: ApiService, private authService: AuthService,) {
   }
 
   get isLoggedIn(): boolean {
@@ -22,20 +21,12 @@ export class AbstractComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.getPictures('abstract').pipe(map(resData => {
-      const picturesArray = [];
-      for(const key in resData) {
-        if(resData.hasOwnProperty(key)) {
-          picturesArray.push({picId:key, ...resData[key]}) 
-        }
-      }
-      return picturesArray
-    }))
+    this.apiService.getPictures('abstract')
       .subscribe({
         next: (pictures) => {
           this.picturesList = pictures;
           console.log(this.picturesList);
-          
+
           this.isLoading = false;
         },
         error: (err) => {
@@ -44,6 +35,5 @@ export class AbstractComponent implements OnInit {
         },
       });
   }
-
 }
 

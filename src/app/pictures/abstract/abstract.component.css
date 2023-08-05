@@ -32,16 +32,26 @@ p  {
     line-height: 1.6;
     font-size: 15px;
     font-weight: 400;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
-    min-width: 0 !important;
+    /* overflow: hidden !important; */
+    /* text-overflow: ellipsis !important; */
+    /* white-space: nowrap !important; */
+    /* min-width: 0 !important; */
     max-width: 313px;
-    font-family: serif;       
+    font-family: serif;
+    /* -webkit-text-stroke-color:black; */
+    /* -webkit-text-stroke:black; */
+           
+}
+
+.picture-name {
+    color: black;
+
 }
 
 .picture-price p {
     line-height: 1.2;
     font-size: 19px;
     font-weight: 800;
+    color: black;
+    
 }
