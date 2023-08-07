@@ -20,10 +20,10 @@
             </ul>
             <ul *ngIf="isLoggedIn">
                 <li>
-                    <a routerLink="/auth/profile">{{user?.username}}'s profile</a>
+                    <a routerLink="/auth/profile">{{ user?.username }}</a>
                 </li>
-                <li>
-                    <a routerLink="/auth/logout">Logout</a>
+                <li (click)="logout()">
+                    <a>Logout</a>
                 </li>
             </ul>
         </div>

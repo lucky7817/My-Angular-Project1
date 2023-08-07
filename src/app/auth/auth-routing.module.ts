@@ -16,10 +16,10 @@ const routes: Routes = [
         path: 'auth/register',
         component: RegisterComponent,
     },
-    {
-        path: 'auth/logout',
-        component: LogoutComponent,
-    },
+    // {
+    //     path: 'auth/logout',
+    //     component: LogoutComponent,
+    // },
     {
         path: 'auth/profile',
         component: YourAccountComponent,
@@ -31,6 +31,10 @@ const routes: Routes = [
     {
         path: 'auth/profile/create-picture',
         component: CreatePictureComponent,
+    },
+    {
+        path: 'auth/profile/account/:userId',
+        component: AccountComponent,
     }
 ];
 

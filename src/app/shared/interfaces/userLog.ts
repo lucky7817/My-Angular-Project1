@@ -1,4 +1,4 @@
 export interface IUserLog {
     username: string;
-    firstname: string;
+    password: string;
 }

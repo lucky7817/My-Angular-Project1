@@ -66,11 +66,15 @@
         <!-- email -->
         <p class="field field-icon">
             <label for="email"><span><i class="field-envelope"></i></span></label>
-            <input type="email" formControlName="email" name="email" id="email" placeholder="Email" email>
+            <input type="email" formControlName="email" name="email" id="email"
+             placeholder="Email" email>
         </p>
         <ng-container *ngIf="form.get('email')?.touched">
             <p class="error" *ngIf="form.get('email')?.errors?.['required']">
                 Email is required!
+            </p>
+            <p class="error" *ngIf="form.get('email')?.errors?.['pattern']">
+                Please provide a valid email address
             </p>
         </ng-container>
 

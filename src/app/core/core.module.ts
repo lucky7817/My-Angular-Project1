@@ -6,6 +6,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthModule } from '../auth/auth.module';
+import { LoginComponent } from '../auth/login/login.component';
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CommonModule,
     RouterModule,
     SharedModule,
+    AuthModule,
   ],
   exports: [
     HomeComponent,

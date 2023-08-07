@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { LoginComponent } from 'src/app/auth/login/login.component';
 import { IGetPicture } from 'src/app/shared/interfaces';
 
 @Component({
@@ -13,7 +14,7 @@ export class AbstractComponent implements OnInit {
   isLoading: boolean = true;
   picturesList: IGetPicture[] = [];
 
-  constructor(private apiService: ApiService, private authService: AuthService,) {
+  constructor(private apiService: ApiService, private authService: AuthService) {
   }
 
   get isLoggedIn(): boolean {

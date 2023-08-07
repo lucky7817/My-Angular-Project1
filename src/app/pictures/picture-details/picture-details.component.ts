@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { LoginComponent } from 'src/app/auth/login/login.component';
 import { IGetPicture, IPicture } from 'src/app/shared/interfaces';
 
 @Component({
@@ -27,8 +28,6 @@ export class PictureDetailsComponent implements OnInit {
     const id: string = this.activatedRoute.snapshot.params['picId'];
     const obj: any = this.activatedRoute.snapshot.params
     console.log(obj);
-    
-    
     
   this.apiService.getPicture(id).subscribe({
       next: (pic) => {

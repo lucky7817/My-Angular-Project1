@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { PicturesModule } from './pictures/pictures.module';
+import { LoginComponent } from './auth/login/login.component';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { PicturesModule } from './pictures/pictures.module';
     PicturesModule,
 
   ],
-  providers: [],
+  providers: [LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,32 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/shared/interfaces';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent {
+export class AccountComponent implements OnInit {
 
   showEditMode: boolean = false;
+  userDetails: IUser[] = [];
+  isLoading: boolean = true;
+  
 
-  userInfo: IUser | null = null
+  // userInfo: IUser | null = null
 
-  // userInfo: IUser = {
-  //   _id: 2
-  //   username: 'ddd171717',
-  //   firstname: 'Dilyan',
-  //   secondname: 'Ivanov',
-  //   lastname: 'Ivanov',
-  //   email: 'dilyan@gmail.com',
-  //   phone: '+3590888775555',
-  //   country: 'Bulgaria',
-  //   place: 'Yambol',
-  //   postcode: '8600',
-  //   street: 'Viza 6',
-  // };
+  userInfo: IUser = {
+    username: 'ddd171717',
+    firstname: 'Dilyan',
+    secondname: 'Ivanov',
+    lastname: 'Ivanov',
+    email: 'dilyan@gmail.com',
+    phone: '+3590888775555',
+    country: 'Bulgaria',
+    place: 'Yambol',
+    postcode: '8600',
+    street: 'Viza 6',
+    password: '',
+    rePassword: ''
+  };
 
 
   form = this.fb.group({
@@ -43,8 +49,32 @@ export class AccountComponent {
   });
 
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router,
+  private authService: AuthService, private activatedRoute: ActivatedRoute) {
+  }
 
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
+  }
+
+  ngOnInit(): void {
+
+    const id: string = this.activatedRoute.snapshot.params['userId'];
+    console.log(id);
+
+    this.authService.getUserDetails()
+    .subscribe({
+      next: (user) => {
+        this.userDetails= user;
+        console.log(user);
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.isLoading = false;
+        console.log(`Error: ${err}`);
+      },
+    })
+    
   }
 
   toggleEditMode(): void {
@@ -55,7 +85,7 @@ export class AccountComponent {
     if (this.form.invalid) { return; }
 
     this.userInfo = { ...this.form.value } as IUser;
-    
+
     this.toggleEditMode();
   }
 

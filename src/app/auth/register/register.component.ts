@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { samePassGroupValidator } from 'src/app/shared/validators';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class RegisterComponent {
     firstname: ['', [Validators.required, Validators.minLength(2)]],
     secondname: ['', [Validators.required, Validators.minLength(2)]],
     lastname: ['', [Validators.required, Validators.minLength(2)]],
-    email: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     phone: ['', [Validators.required, Validators.minLength(9)]],
     country: ['', [Validators.required, Validators.minLength(2)]],
     place: ['', [Validators.required, Validators.minLength(2)]],
@@ -26,22 +26,22 @@ export class RegisterComponent {
     pass: this.fb.group({
       password: ['', [Validators.required, Validators.minLength(5)]],
       rePassword: [],
-    }, 
-    {
-      validators: [samePassGroupValidator('password', 'rePassword')]
-    })
+    },
+      {
+        validators: [samePassGroupValidator('password', 'rePassword')]
+      })
   })
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   // registerHandler() {
   //   console.log(this.form.value);
   // }
   registerHandler(): void {
     if (this.form.invalid) { return; }
-    const { _id, username, firstname, secondname, lastname, email, phone, country, place,
-      postcode, street, pass: {password, rePassword} = {} } = this.form.value;
-    this.authService.createUser(_id!, username!, firstname!, secondname!,
+    const {username, firstname, secondname, lastname, email, phone, country, place,
+      postcode, street, pass: { password, rePassword } = {} } = this.form.value;
+    this.authService.createUser(username!, firstname!, secondname!,
       lastname!, email!, phone!, country!, place!, postcode!, street!,
       password!, rePassword!).subscribe(
         response => { console.log(response); this.router.navigate(["/auth/profile"]) },
