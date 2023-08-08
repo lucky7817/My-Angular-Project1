@@ -11,7 +11,7 @@ import { LoginComponent } from 'src/app/auth/login/login.component';
 export class HeaderComponent {
 
   constructor(private authService: AuthService, private router: Router) {
-    console.log(this.user);
+   
   }
 
   get isLoggedIn() {
@@ -24,10 +24,18 @@ export class HeaderComponent {
 
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/']);
+    this.router.navigate((['/']));
+    // this.authService.logout().subscribe({
+    //   next: () => {
+    //     this.router.navigate(['/']);
+    //   },
+    //   error: () => {
+    //     this.router.navigate(['/']);
+    //   },
+    // });
   }
 
-  
+
 
 
 }

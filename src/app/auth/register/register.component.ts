@@ -39,12 +39,14 @@ export class RegisterComponent {
   // }
   registerHandler(): void {
     if (this.form.invalid) { return; }
-    const {username, firstname, secondname, lastname, email, phone, country, place,
+    const { username, firstname, secondname, lastname, email, phone, country, place,
       postcode, street, pass: { password, rePassword } = {} } = this.form.value;
+
     this.authService.createUser(username!, firstname!, secondname!,
       lastname!, email!, phone!, country!, place!, postcode!, street!,
-      password!, rePassword!).subscribe(
-        response => { console.log(response); this.router.navigate(["/auth/profile"]) },
+      password!, rePassword!).subscribe(() => {
+        this.router.navigate(["/auth/profile"]);
+      },
         (err) => console.log(err)
       )
   }

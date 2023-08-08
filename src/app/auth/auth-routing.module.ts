@@ -5,6 +5,7 @@ import { LogoutComponent } from "./logout/logout.component";
 import { YourAccountComponent } from "./your-account/your-account.component";
 import { AccountComponent } from "./account/account.component";
 import { CreatePictureComponent } from "./create-picture/create-picture.component";
+import { UserDetailsComponent } from "./user-details/user-details.component";
 
 
 const routes: Routes = [

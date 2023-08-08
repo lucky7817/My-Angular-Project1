@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IGetPicture, IPicture } from './shared/interfaces';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/enveronments/environment-development';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getPictures(picturePath: string) {
-    return this.http.get<{ [picId: string]: IGetPicture }>(`https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/${picturePath}.json`)
+    const { apiUrl } = environment;
+    return this.http.get<{ [picId: string]: IGetPicture }>(`${apiUrl}/${picturePath}.json`)
     .pipe(map(resData => {
       const picturesArray = [];
       for (const key in resData) {
@@ -22,12 +24,12 @@ export class ApiService {
         }
       }
       return picturesArray
-    }))
-      
+    }))    
   }
 
   getPicture(id: string)  {
-    return this.http.get<IPicture>(`https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/abstract/${id}.json`)
+    const { apiUrl } = environment;
+    return this.http.get<IPicture>(`${apiUrl}/abstract/${id}.json`)
     
   }
 }

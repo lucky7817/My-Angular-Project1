@@ -9,6 +9,6 @@ export interface IGetUser {
     place: string;
     postcode: string;
     street: string;
-    // password: string;
-    // rePassword: string;
+    password: string;
+    rePassword: string;
 }

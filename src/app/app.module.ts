@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
 import { PicturesModule } from './pictures/pictures.module';
 import { LoginComponent } from './auth/login/login.component';
+import { appInterceptorProvider } from './app.interseptor';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { LoginComponent } from './auth/login/login.component';
     PicturesModule,
 
   ],
-  providers: [LoginComponent],
+  providers: [LoginComponent, appInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import { IGetUser, IPicture, IUser, IUserLog } from '../shared/interfaces';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map, tap } from 'rxjs/operators';
+import { environment } from 'src/enveronments/environment-development';
+import { BehaviorSubject } from 'rxjs';
+
+const { apiUrl } = environment;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private user$$ = new BehaviorSubject<IGetUser | undefined>(undefined);
+
+  user$ = this.user$$.asObservable();
 
   usersList: IUser[] = [];
   
@@ -18,6 +26,8 @@ export class AuthService {
   user: IUserLog | undefined;
   USER_KEY = '[user]';
 
+  currentUser: string | undefined = undefined;
+
   get isLoggedIn(): boolean {
     return !!this.user;
   }
@@ -26,6 +36,10 @@ export class AuthService {
     try {
       const lsUser = localStorage.getItem(this.USER_KEY) || '';
       this.user = JSON.parse(lsUser);
+      this.currentUser = this.user?.username
+      // console.log(this.user?.username);
+      // console.log(this.currentUser);
+      
     } catch (error) {
       this.user = undefined;
     }
@@ -38,10 +52,19 @@ export class AuthService {
     };
 
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+    // const headers = new HttpHeaders().set('content-type', 'application/json')
+    // .set('Access-Control-Allow-Origin', 'true');
+    // return this.http
+    // .post<IGetUser>('/api/login', { username, password })
+    // .pipe(tap((user) => this.user$$.next(user)));
+
   }
 
-  logout(): void {
+  logout() {
     this.user = undefined;
+    // return this.http
+    // .post<IGetUser>('/api/logout', {})
+    // .pipe(tap(() => this.user$$.next(undefined)));
     localStorage.removeItem(this.USER_KEY);
   }
 
@@ -56,11 +79,12 @@ export class AuthService {
     secondname: string, lastname: string, email: string, phone: string,
     country: string, place: string, postcode: string, street: string, password: string,
     rePassword: string) {
-    return this.http.post<IUser[]>('https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/users.json',
+    return this.http.post<IGetUser>(`${apiUrl}/users.json`,
       {
         username, firstname, secondname, lastname, email, phone, country, place,
         postcode, street, password, rePassword
-      });
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   // getPicture(id: string) {
@@ -68,33 +92,9 @@ export class AuthService {
 
   // }
 
-
-
   getUsers() {
-    return this.http.get<{ [userId: string]: IUser }>(`https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/users.json`)
-      .pipe(map(resData => {
-        const usersList = [];
-        for (const key in resData) {
-          if (resData.hasOwnProperty(key)) {
-            usersList.push({ userId: key, ...resData[key] })
-          }
-        }
-        return usersList
-      }))
-      .subscribe({
-        next: (users) => {
-          this.usersList = users;
-          console.log(this.usersList);
-        },
-        error: (err) => {
-          // this.isLoading = false;
-          console.log(`Error: ${err}`);
-        },
-      });  
-  }
-
-  getUserDetails() {
-    return this.http.get<{ [userId: string]: IUser }>(`https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/users.json`)
+    const { apiUrl } = environment;
+    return this.http.get<{ [userId: string]: IUser }>(`${apiUrl}/users.json`)
       .pipe(map(resData => {
         const usersArray = [];
         for (const key in resData) {
@@ -104,6 +104,31 @@ export class AuthService {
         }
         return usersArray
       }))
+      .subscribe({
+        next: (users) => {
+          this.usersList = users;
+          // console.log(this.usersList);
+        },
+        error: (err) => {
+          // this.isLoading = false;
+          console.log(`Error: ${err}`);
+        },
+      });  
+  }
+
+  getUserDetails() {
+    const { apiUrl } = environment;
+    return this.http.get<{ [userId: string]: IUser }>(`${apiUrl}/users.json`)  
+    .pipe(map(resData => {
+        const usersArray = [];
+        for (const key in resData) {
+          if (resData.hasOwnProperty(key)) {
+            usersArray.push({ userId: key, ...resData[key] })
+          }
+        }
+        return usersArray
+      }))
+
       // .subscribe({
       //   next: (users) => {
       //     this.usersList = users;
@@ -117,7 +142,7 @@ export class AuthService {
   }
 
   getUser(id: string) {
-    return this.http.get<IGetUser>(`https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/users/${id}.json`)
+    return this.http.get<IGetUser>(`${apiUrl}/users/${id}.json`)
   }
 
 }

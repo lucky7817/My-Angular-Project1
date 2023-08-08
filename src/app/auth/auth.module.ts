@@ -9,6 +9,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatePictureComponent } from './create-picture/create-picture.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { EditAccountComponent } from './edit-account/edit-account.component';
 
 
 
@@ -20,7 +21,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     YourAccountComponent,
     CreatePictureComponent,
     UserDetailsComponent,
-
+    EditAccountComponent,
+  
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     AccountComponent,
     YourAccountComponent,
     CreatePictureComponent,
+    UserDetailsComponent,
   ]
 })
 export class AuthModule { }
