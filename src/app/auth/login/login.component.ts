@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    
     this.currentUser = form.value.username;
-
     this.authService.login(this.currentUser);
     this.router.navigate(["/"]);
   }

@@ -38,6 +38,9 @@ import { EditAccountComponent } from './edit-account/edit-account.component';
     YourAccountComponent,
     CreatePictureComponent,
     UserDetailsComponent,
-  ]
+    EditAccountComponent,
+  ],
+  providers: [AccountComponent]
+
 })
 export class AuthModule { }

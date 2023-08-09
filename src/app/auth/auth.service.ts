@@ -17,7 +17,7 @@ export class AuthService {
   user$ = this.user$$.asObservable();
 
   usersList: IUser[] = [];
-  
+
 
   // loginHandler() {
   //   throw new Error('Method not implemented.');
@@ -32,6 +32,12 @@ export class AuthService {
     return !!this.user;
   }
 
+  // private _isLoggedIn2 = new BehaviorSubject<boolean>(false);
+
+  // get isLoggedIn2() {
+  //   return this._isLoggedIn2.asObservable();
+  // }
+
   constructor(private http: HttpClient) {
     try {
       const lsUser = localStorage.getItem(this.USER_KEY) || '';
@@ -39,7 +45,7 @@ export class AuthService {
       this.currentUser = this.user?.username
       // console.log(this.user?.username);
       // console.log(this.currentUser);
-      
+
     } catch (error) {
       this.user = undefined;
     }
@@ -84,7 +90,7 @@ export class AuthService {
         username, firstname, secondname, lastname, email, phone, country, place,
         postcode, street, password, rePassword
       })
-      .pipe(tap((user) => this.user$$.next(user)));
+      // .pipe(tap((user) => this.user$$.next(user)));
   }
 
   // getPicture(id: string) {
@@ -113,13 +119,13 @@ export class AuthService {
           // this.isLoading = false;
           console.log(`Error: ${err}`);
         },
-      });  
+      });
   }
 
   getUserDetails() {
     const { apiUrl } = environment;
-    return this.http.get<{ [userId: string]: IUser }>(`${apiUrl}/users.json`)  
-    .pipe(map(resData => {
+    return this.http.get<{ [userId: string]: IUser }>(`${apiUrl}/users.json`)
+      .pipe(map(resData => {
         const usersArray = [];
         for (const key in resData) {
           if (resData.hasOwnProperty(key)) {
@@ -129,20 +135,30 @@ export class AuthService {
         return usersArray
       }))
 
-      // .subscribe({
-      //   next: (users) => {
-      //     this.usersList = users;
-      //     console.log(this.usersList);
-      //   },
-      //   error: (err) => {
-      //     // this.isLoading = false;
-      //     console.log(`Error: ${err}`);
-      //   },
-      // });  
+    // .subscribe({
+    //   next: (users) => {
+    //     this.usersList = users;
+    //     console.log(this.usersList);
+    //   },
+    //   error: (err) => {
+    //     // this.isLoading = false;
+    //     console.log(`Error: ${err}`);
+    //   },
+    // });  
   }
 
   getUser(id: string) {
     return this.http.get<IGetUser>(`${apiUrl}/users/${id}.json`)
+  }
+
+  updateUser(username: string, firstname: string,
+    secondname: string, lastname: string, email: string, phone: string,
+    country: string, place: string, postcode: string, street: string, id: string) {
+    return this.http.put<IGetUser>(`${apiUrl}/users/${id}.json`,
+      {
+        username, firstname, secondname, lastname, email, phone, country, place,
+        postcode, street
+      })
   }
 
 }

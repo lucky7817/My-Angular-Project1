@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
 
   form = this.fb.group({
-    _id: [''],
     username: ['', [Validators.required, Validators.minLength(5)]],
     firstname: ['', [Validators.required, Validators.minLength(2)]],
     secondname: ['', [Validators.required, Validators.minLength(2)]],
@@ -45,7 +44,7 @@ export class RegisterComponent {
     this.authService.createUser(username!, firstname!, secondname!,
       lastname!, email!, phone!, country!, place!, postcode!, street!,
       password!, rePassword!).subscribe(() => {
-        this.router.navigate(["/auth/profile"]);
+        this.router.navigate(["/auth/login"]);
       },
         (err) => console.log(err)
       )

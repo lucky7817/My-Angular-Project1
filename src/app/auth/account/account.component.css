@@ -73,12 +73,22 @@
     font-family: serif;
     margin-inline: 0% 3%;
     writing-mode: horizontal-tb;
-    direction: rtl;   
+    direction: rtl;  
+    margin: 1px;
+    display: block; 
+    margin-top: 25px;
+    margin-left: 35px;
+    /* text-align: center; */
 }
 
 .profile button:hover {
     box-shadow: 0 0 30px 0 #f17f04 inset, 0 0 25px 4px #f78204;
     border: 1px solid #8d8c88;
+}
+
+.btn {
+    display: flex;
+    /* text-align: center;  */
 }
 
 .field>input,
@@ -109,7 +119,7 @@
     font-family: serif;
 }
 
-.cancel-button {
+.edit-button {
     color: white;
     border: none;
     border-radius: 0.4em;
@@ -119,16 +129,5 @@
     background-color: rgb(232, 134, 54);
     width: 110px;
     font-family: serif;
-}
-
-.save-button {
-    color: white;
-    border: none;
-    border-radius: 0.4em;
-    padding: 0.6em 1.2em;
-    outline: none;
-    margin-top: 45px;
-    background-color: rgb(232, 134, 54);
-    width: 110px;
-    font-family: serif;
+    
 }

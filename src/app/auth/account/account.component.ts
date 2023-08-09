@@ -16,23 +16,25 @@ export class AccountComponent implements OnInit {
   showEditMode: boolean = false;
   usersDetails: IUser[] = [];
   isLoading: boolean = true;
+
+  id: string = ''
   
 
   // userInfo: IUser | null = null
   
 
   userInfo: any = {
-    userId: '',
-    username: '',
-    firstname: '',
-    secondname: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    country: '',
-    place: '',
-    postcode: '',
-    street: '',
+    // userId: '',
+    // username: '',
+    // firstname: '',
+    // secondname: '',
+    // lastname: '',
+    // email: '',
+    // phone: '',
+    // country: '',
+    // place: '',
+    // postcode: '',
+    // street: '',
     // password: '',
     // rePassword: ''
   };
@@ -54,7 +56,6 @@ export class AccountComponent implements OnInit {
     .subscribe({
       next: (user) => {
         this.usersDetails= user;
-        console.log(this.usersDetails);
         const indexInArrayLoggedinObjectUser = this.usersDetails.findIndex(x => 
           x.username === this.authService.currentUser);
 
@@ -62,12 +63,12 @@ export class AccountComponent implements OnInit {
           
           for(const key in myUserObj) {
             if (myUserObj.hasOwnProperty(key)) {
-              if(this.userInfo.hasOwnProperty(key)) {
-                this.userInfo[key] = (myUserObj[key]); 
-              }
+              this.userInfo[key] = (myUserObj[key]); 
+              // if(this.userInfo.hasOwnProperty(key)) {
+              // }
             }
           }
-          console.log(this.userInfo.userId);
+          this.id = this.userInfo.userId
           
         this.isLoading = false;
       },
@@ -75,14 +76,23 @@ export class AccountComponent implements OnInit {
         this.isLoading = false;
         console.log(`Error: ${err}`);
       },
-    })  
+    }) 
+    
+    
   }
 
-  toggleEditMode(): void {
-    this.showEditMode = !this.showEditMode;
-  }
+  // ddd(): void {
+  //   this.router.navigate(["/auth/profile/account/edit"])
+  //   // this.showEditMode = !this.showEditMode;
+  // }
 
-  
+  // toggleEditMode(): void {
+  //   this.showEditMode = !this.showEditMode;
+  // }
+
+  redirectToEditComponent() {
+    this.router.navigate([`/auth/profile/account/edit/${this.userInfo.userId}`]);
+  }
 
   closeAccountForm(): void {
     this.router.navigate(["/auth/profile"]);
