@@ -7,6 +7,7 @@ import { AccountComponent } from "./account/account.component";
 import { CreatePictureComponent } from "./create-picture/create-picture.component";
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { EditAccountComponent } from "./edit-account/edit-account.component";
+import { ShoppingBasketComponent } from "./shopping-basket/shopping-basket.component";
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
     {
         path: 'auth/register',
         component: RegisterComponent,
+    },
+    {
+        path: 'auth/basket',
+        component: ShoppingBasketComponent,
     },
     // {
     //     path: 'auth/logout',

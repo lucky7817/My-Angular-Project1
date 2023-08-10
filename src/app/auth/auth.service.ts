@@ -18,6 +18,8 @@ export class AuthService {
 
   usersList: IUser[] = [];
 
+  picturesToBeBuyIt: any[] = [];
+
 
   // loginHandler() {
   //   throw new Error('Method not implemented.');

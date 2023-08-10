@@ -1,0 +1,10 @@
+<p>You have {{items.length}} items in your basket.</p>
+<p>Total: {{total() | currency:'Euro':'€'}}</p>
+<div class="items">
+    <app-shopping-item>
+        class="item"
+        *ngFor="let item of items"
+        [item]="item"
+        (onRemove)="removeItem(item)">
+    </app-shopping-item>
+</div>

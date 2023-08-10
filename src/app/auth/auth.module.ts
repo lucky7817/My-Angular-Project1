@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatePictureComponent } from './create-picture/create-picture.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
+import { ShoppingBasketComponent } from './shopping-basket/shopping-basket.component';
+import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
 
 
 
@@ -22,6 +24,8 @@ import { EditAccountComponent } from './edit-account/edit-account.component';
     CreatePictureComponent,
     UserDetailsComponent,
     EditAccountComponent,
+    ShoppingBasketComponent,
+    ShoppingItemComponent,
   
   ],
   imports: [
@@ -39,6 +43,8 @@ import { EditAccountComponent } from './edit-account/edit-account.component';
     CreatePictureComponent,
     UserDetailsComponent,
     EditAccountComponent,
+    ShoppingBasketComponent,
+    ShoppingItemComponent,
   ],
   providers: [AccountComponent]
 

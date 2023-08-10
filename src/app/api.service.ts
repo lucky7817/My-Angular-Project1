@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IGetPicture, IPicture } from './shared/interfaces';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/enveronments/environment-development';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +28,12 @@ export class ApiService {
     }))    
   }
 
-  getPicture(id: string)  {
+  getPicture(category: string, id: string)  {
     const { apiUrl } = environment;
-    return this.http.get<IPicture>(`${apiUrl}/abstract/${id}.json`)
-    
+    return this.http.get<IPicture>(`${apiUrl}${category}${id}.json`)  
   }
+
+  // getWhatYouSearch(searchValue: string): Observable<SearchInterface[]> {
+  //   return this.http.get<SearchInterface[]>
+  // }
 }

@@ -6,7 +6,7 @@
         <form>
             <div class="search-line">
                 <input type="search" id="mySearch" name="search" placeholder="Search for anything" />
-                <button>Search</button>
+                <button type="button">Search</button>
             </div>
         </form>
         <div class="mini-navbar">
@@ -24,6 +24,9 @@
                 </li>
                 <li (click)="logout()">
                     <a>Logout</a>
+                </li>
+                <li>
+                    <a routerLink="/auth/basket">My cart</a>
                 </li>
             </ul>
         </div>

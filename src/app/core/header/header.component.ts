@@ -10,6 +10,8 @@ import { LoginComponent } from 'src/app/auth/login/login.component';
 })
 export class HeaderComponent {
 
+  
+
   constructor(private authService: AuthService, private router: Router) {
    
   }
@@ -34,8 +36,5 @@ export class HeaderComponent {
     //   },
     // });
   }
-
-
-
 
 }

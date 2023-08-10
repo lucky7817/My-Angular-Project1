@@ -53,6 +53,39 @@ const routes: Routes = [
     path: 'picture/abstract/:picId',
     component: PictureDetailsComponent,
   },
+  {
+    path: 'picture/animals/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/auto/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/childrens/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/flowers/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/foodAndDrinks/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/nature/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/portraites/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/reproductions/:picId',
+    component: PictureDetailsComponent,
+  },
+
 ];
 
 export const PictureRoutingModule = RouterModule.forChild(routes);
