@@ -134,19 +134,9 @@ export class AuthService {
             usersArray.push({ userId: key, ...resData[key] })
           }
         }
-        return usersArray
+        return usersArray;
       }))
 
-    // .subscribe({
-    //   next: (users) => {
-    //     this.usersList = users;
-    //     console.log(this.usersList);
-    //   },
-    //   error: (err) => {
-    //     // this.isLoading = false;
-    //     console.log(`Error: ${err}`);
-    //   },
-    // });  
   }
 
   getUser(id: string) {
@@ -163,16 +153,11 @@ export class AuthService {
       })
   }
 
+  deleteItemFromCart() { 
+    return this.http.delete(`${apiUrl}/MyCart.json`).subscribe();
+  }
+
 }
 
 
-// const object = {
-//   name: "John",
-//   age: 30
-// };
 
-// if (Object.keys(object).some((key) => object[key] === "John")) {
-//   console.log("Value exists");
-// } else {
-//   console.log("Value does not exist");
-// }

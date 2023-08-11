@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { LoginComponent } from 'src/app/auth/login/login.component';
 
@@ -12,7 +13,8 @@ export class HeaderComponent {
 
   
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router,
+    private apiService: ApiService) {
    
   }
 
@@ -35,6 +37,10 @@ export class HeaderComponent {
     //     this.router.navigate(['/']);
     //   },
     // });
+  }
+
+  itemsCountInCart() {
+    return this.apiService.itemsCount();
   }
 
 }

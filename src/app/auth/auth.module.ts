@@ -11,7 +11,6 @@ import { CreatePictureComponent } from './create-picture/create-picture.componen
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 import { ShoppingBasketComponent } from './shopping-basket/shopping-basket.component';
-import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
 
 
 
@@ -25,8 +24,7 @@ import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
     UserDetailsComponent,
     EditAccountComponent,
     ShoppingBasketComponent,
-    ShoppingItemComponent,
-  
+    
   ],
   imports: [
     CommonModule,
@@ -43,8 +41,7 @@ import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
     CreatePictureComponent,
     UserDetailsComponent,
     EditAccountComponent,
-    ShoppingBasketComponent,
-    ShoppingItemComponent,
+    ShoppingBasketComponent, 
   ],
   providers: [AccountComponent]
 

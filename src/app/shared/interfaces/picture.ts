@@ -1,5 +1,5 @@
 export interface IPicture {
-    picId: string;
+    picId?: string;
     picName: string;
     picMaterials: string;
     picCategory: string;
