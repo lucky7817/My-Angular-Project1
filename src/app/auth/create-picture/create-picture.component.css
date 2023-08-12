@@ -18,13 +18,6 @@ form.create {
     padding-right: 0;
     padding-bottom: 0;
     margin-top: 10px;
-    /* padding: 50px; */
-    /* background-color: rgb(232, 134, 54); */
-    /* position: absolute; */
-    /* left: 36%; */
-    /* top: 6%; */
-    /* align-items: center; */
-    /* justify-content: center; */
 }
 
 .create .field {
@@ -90,8 +83,6 @@ textarea {
     padding-top: 1.5rem;
 }
 
-
-
 .create button {
     color: white;
     border: none;
@@ -106,8 +97,7 @@ textarea {
 
 .create button:hover {
     box-shadow: 0 0 30px 0 #f17f04 inset, 0 0 25px 4px #f78204;
-    border: 1px solid #8d8c88;
-    
+    border: 1px solid #8d8c88;    
 }
 
 .create i {
@@ -115,20 +105,6 @@ textarea {
     border-bottom-left-radius: 0.3em;
     background-color: #e9ecef;
 }
-
-/* .create a {
-    color: rgb(232, 134, 54);
-} */
-
-/* .register a:hover {
-    cursor: pointer;
-} */
-
-/* .register .phone {
-    padding-right: 0.8em;
-} */
-
-
 
 p.error {
     text-align: left;

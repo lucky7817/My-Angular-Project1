@@ -34,12 +34,6 @@ export class AuthService {
     return !!this.user;
   }
 
-  // private _isLoggedIn2 = new BehaviorSubject<boolean>(false);
-
-  // get isLoggedIn2() {
-  //   return this._isLoggedIn2.asObservable();
-  // }
-
   constructor(private http: HttpClient) {
     try {
       const lsUser = localStorage.getItem(this.USER_KEY) || '';
@@ -60,22 +54,12 @@ export class AuthService {
     };
 
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-    // const headers = new HttpHeaders().set('content-type', 'application/json')
-    // .set('Access-Control-Allow-Origin', 'true');
-    // return this.http
-    // .post<IGetUser>('/api/login', { username, password })
-    // .pipe(tap((user) => this.user$$.next(user)));
-
   }
 
   logout() {
     this.user = undefined;
-    // return this.http
-    // .post<IGetUser>('/api/logout', {})
-    // .pipe(tap(() => this.user$$.next(undefined)));
     localStorage.removeItem(this.USER_KEY);
   }
-
 
   createPicture(picName: string, pickMaterials: string, picCategory: string,
     picImage: string, picPrice: number, picDescription: string) {
@@ -92,13 +76,7 @@ export class AuthService {
         username, firstname, secondname, lastname, email, phone, country, place,
         postcode, street, password, rePassword
       })
-      // .pipe(tap((user) => this.user$$.next(user)));
   }
-
-  // getPicture(id: string) {
-  //   return this.http.get<IPicture>(`https://my-project-angular-4dd57-default-rtdb.europe-west1.firebasedatabase.app/abstract/${id}.json`)
-
-  // }
 
   getUsers() {
     const { apiUrl } = environment;
@@ -115,10 +93,8 @@ export class AuthService {
       .subscribe({
         next: (users) => {
           this.usersList = users;
-          // console.log(this.usersList);
         },
         error: (err) => {
-          // this.isLoading = false;
           console.log(`Error: ${err}`);
         },
       });
@@ -136,7 +112,6 @@ export class AuthService {
         }
         return usersArray;
       }))
-
   }
 
   getUser(id: string) {
@@ -156,7 +131,7 @@ export class AuthService {
   deleteItemFromCart() { 
     return this.http.delete(`${apiUrl}/MyCart.json`).subscribe();
   }
-
+  
 }
 
 

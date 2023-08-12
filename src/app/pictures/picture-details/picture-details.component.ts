@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { IPicture } from 'src/app/shared/interfaces';
@@ -9,20 +10,19 @@ import { IPicture } from 'src/app/shared/interfaces';
   templateUrl: './picture-details.component.html',
   styleUrls: ['./picture-details.component.css']
 })
-export class PictureDetailsComponent implements OnInit, OnDestroy {
+export class PictureDetailsComponent implements OnInit {
 
   picture: IPicture | undefined;
   isLoading: boolean = true;
   pictureToCart: IPicture | undefined;
 
+  myCurrPicture: any
+
   category: any;
-  
-  // items: IPicture[] = [];
 
   routerEvents: any;
 
-  
-
+  isEditMode: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService,
     private authService: AuthService, private router: Router) {
@@ -38,12 +38,8 @@ export class PictureDetailsComponent implements OnInit, OnDestroy {
     let regExp = /(\/[a-zA-Z]*)(\/[a-zA-Z]*\/)/gm
     const result: any = regExp.exec(url);
     this.category = result[2]
-    // console.log(result);
-
-
+    
     const id: string = this.activatedRoute.snapshot.params['picId'];
-    // console.log(id);
-
 
     this.apiService.getPicture(result[2], id).subscribe({
       next: (pic) => {
@@ -55,15 +51,10 @@ export class PictureDetailsComponent implements OnInit, OnDestroy {
         console.log(`Error: ${err}`);
       },
     })
-
   }
 
   backToList(): void {
     this.router.navigate([`/picture${this.category}`]);
-  }
-
-  ngOnDestroy(): void {
-    // this.router.events.unsubscribe();
   }
 
   addPicToCart() {
@@ -72,7 +63,6 @@ export class PictureDetailsComponent implements OnInit, OnDestroy {
     let regExp = /(\/[a-zA-Z]*)(\/[a-zA-Z]*\/)/gm
     const result: any = regExp.exec(url);
     console.log(result);
-
 
     const id: string = this.activatedRoute.snapshot.params['picId'];
     console.log(id);
@@ -84,55 +74,55 @@ export class PictureDetailsComponent implements OnInit, OnDestroy {
         next: (pic) => {
           this.pictureToCart = pic;
 
-          // console.log(this.pictureToCart);
-          // this.items.push(this.pictureToCart);
           this.apiService.createItemInMyCart(this.pictureToCart.picName,
             this.pictureToCart.picImage, this.pictureToCart.picPrice,
             this.pictureToCart.picDescription)
             .subscribe({
               next: (id: any) => {
                 console.log(id);
-                this.apiService.getItemFromMyCart(id.name)
-                  
-
-                // .pipe(map(resData => {
-
-                //   for (const key in resData) {
-                //     if (resData.hasOwnProperty(key)) {
-                //       this.items.push({ picId: key, ...resData[key] })
-                //     }
-                //   }
-                //   return this.items
-                // }))
+                this.apiService.getItemFromMyCart(id.name);
               }
             })
-
         },
         error: (err) => {
           console.log(`Error: ${err}`);
         }
       })
 
-
-
-    // this.apiService.createItem(pisName)
     window.alert('The picture has been added to the cart!');
   }
 
-  // getItems() {
-  //   return this.items;
-  // }
+  editPic() {
+    const id: string = this.activatedRoute.snapshot.params['picId'];
 
-  // itemsCount() {
-  //   return this.items.length;
-  // }
+    this.router.navigate([`/picture${this.category}edit/${id}`]);
+  }
 
-  // clearCart() {
-  //   this.items = [];
-  // }
+  toggleEditMode(): void {
+    this.isEditMode = !this.isEditMode;
+  }
 
-  
+  cancelForm(): void {
+    const id: string = this.activatedRoute.snapshot.params['picId'];
+    this.router.navigate([`/picture${this.category}${id}`]);
+  }
 
+  savePicture(form: NgForm): void {
+    const id: string = this.activatedRoute.snapshot.params['picId'];
+    const { picName, pickMaterials, picCategory, picImage, picPrice, picDescription } = form.value;
+    this.apiService.editPicture(picName, pickMaterials, picCategory, picImage,
+      picPrice, picDescription, id).subscribe(
+        response => { console.log(response); this.router.navigate([`/picture${this.category}`]) },
+        (err) => console.log(err)
+      )
+  }
 
+  deletePicture() {
+    const id: string = this.activatedRoute.snapshot.params['picId'];
+    if (confirm('Are you sure?')) {
+      this.apiService.deletePic(this.category, id);
+      this.router.navigate([`/`]);
+    }
+  }
 }
 

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { FormBuilder } from '@angular/forms';
-import { IPicture } from 'src/app/shared/interfaces';
 import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-shopping-basket',
   templateUrl: './shopping-basket.component.html',
@@ -10,19 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class ShoppingBasketComponent {
 
-
   items: any = this.apiService.getItems();
-
-  totalAmount: any;
-
-  getTotal() {
-
-    const totalPrice = this.items.map((item: any) => item.picPrice)
-    .reduce((acc: any, curr: any) => acc + curr);
-
-    console.log(totalPrice);
-    
-  }
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder,
     private authService: AuthService) { }
@@ -37,7 +25,7 @@ export class ShoppingBasketComponent {
     console.warn('Your order has been submitted!', this.checkoutForm.value);
     this.checkoutForm.reset();
     this.authService.deleteItemFromCart();
-    
+
   }
 
 

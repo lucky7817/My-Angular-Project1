@@ -85,6 +85,42 @@ const routes: Routes = [
     path: 'picture/reproductions/:picId',
     component: PictureDetailsComponent,
   },
+  {
+    path: 'picture/abstract/edit/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/animals/edit/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/auto/edit/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/childrens/edit/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/flowers/edit/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/foodAndDrinks/edit/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/nature/edit/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/portraites/edit/:picId',
+    component: PictureDetailsComponent,
+  },
+  {
+    path: 'picture/reproductions/edit/:picId',
+    component: PictureDetailsComponent,
+  },
 
 ];
 

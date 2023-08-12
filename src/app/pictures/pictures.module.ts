@@ -13,6 +13,7 @@ import { NatureComponent } from './nature/nature.component';
 import { PortraitesComponent } from './portraites/portraites.component';
 import { ReproductionsComponent } from './reproductions/reproductions.component';
 import { PictureDetailsComponent } from './picture-details/picture-details.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -33,6 +34,7 @@ import { PictureDetailsComponent } from './picture-details/picture-details.compo
     CommonModule,
     PictureRoutingModule,
     SharedModule,
+    FormsModule,
     AuthModule,
   ],
   exports: [

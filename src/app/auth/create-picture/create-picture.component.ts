@@ -12,6 +12,10 @@ export class CreatePictureComponent {
 
   isLoading: boolean = true;
 
+  get isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
+  }
+
   constructor(private authService: AuthService, private router: Router) { }
 
   createPictureHandler(form: NgForm): void {
